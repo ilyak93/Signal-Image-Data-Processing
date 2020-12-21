@@ -2,7 +2,7 @@
 close all; clear all; clc;
 % Section a
 disp('Part 2');
-n=2;
+n=6;
 N=2^n;
 
 H = generate_hadamard(N);
@@ -14,9 +14,8 @@ H_functions = H*pwf_v;
 %plotting the functions
 for i=1:8:N
     figure(1000+i);
-    title('Hadamard functions');
     hold on
-    for j=i-1:i+7
+    for j=i-1:i+6
         if j+1 > size(H_functions)
             break
         end
@@ -26,9 +25,10 @@ for i=1:8:N
         ylim([-1.5 1.5]);
         set(sb,'FontSize',5);
         grid(sb,'on');
-        str = sprintf('%d-th function of n=%d',j+1,n);
+        str = sprintf('%d-th Hadamard function of n=%d',j+1,n);
         title(str)
     end
+    hold off
 end
 
 W = generate_walsh_hadamard(N);
@@ -40,9 +40,8 @@ W_functions = W*pwf_v;
 %plotting the functions
 for i=1:8:N
     figure(2000+i);
-    title('Walsh-Hadamard functions');
     hold on
-    for j=i-1:i+7
+    for j=i-1:i+6
         if j+1 > size(W_functions)
             break
         end
@@ -52,7 +51,7 @@ for i=1:8:N
         ylim([-1.5 1.5]);
         set(sb,'FontSize',5);
         grid(sb,'on');
-        str = sprintf('%d-th function of n=%d',j+1,n);
+        str = sprintf('%d-th Walsh-Hadamard function of n=%d',j+1,n);
         title(str)
     end
 end
@@ -61,7 +60,6 @@ end
 
 left = -4;
 right = 5;
-
 %using symbolic param t
 syms t
 phi_t = t*exp(t);
